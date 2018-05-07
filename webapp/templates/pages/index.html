@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Todo List</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/todoCtrl.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/crowdcomms.css" %}">
+        <link rel="stylesheet" href="{% static "css/table.css" %}">
+
+    </head>
+    {% verbatim %}
+    <body ng-app="todoApp">
+        <div  class="ccHeader">
+            <div class="ccTitle">CrowdComms Todo List Gilson Dias <Code Challenge> </div>
+        </div>
+        <div class="addNewTodo">
+            <label>Title:</label><input type="text">
+            <label>Description:</label><textarea></textarea>
+            <label>Priority/:</label>
+            <select>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">Righ</option>
+                <option value="4">Urgent</option>
+            </select>
+            <input type="button" value="Add New Task" ng-click="" class="large blue button"/>
+        </div>
+        <div style="height: 15px; width: 100%"></div>
+        <!--listing todo tasks-->
+         <div ng-controller="todoCtrl" class="divTable">
+            <div class="table">
+                <div class="row header">
+                    <div class="cell" style="width: 10%">
+                        Priority
+                    </div>
+                    <div class="cell" style="width: 15%">
+                        Title
+                    </div>
+                    <div class="cell" style="width: 50%">
+                        Description
+                    </div>
+                    <div class="cell" style="width: 15%">
+                        Deadline
+                    </div>
+                    <div class="cell" style="width: 10%">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="row tableRow{{ to.priority }}" ng-repeat="to in todo">
+                    <div class="cell" data-title="Priority" style="width: 10%">
+                        <li class="priority{{ to.priority }}"></li>
+                    </div>
+                    <div class="cell" data-title="Title" style="width: 15%">
+                        {{ to.title }}
+                    </div>
+                    <div class="cell" data-title="Description" style="width: 50%">
+                        {{ to.text }}
+                    </div>
+                    <div class="cell" data-title="Deadline" style="width: 15%">
+                        {{ to.deadline }}
+                    </div>
+                    <div class="cell" style="width: 10%">
+                         <input type="button" class="large grey button" value="Edit" ng-click="Calling()"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </body>
+    {% endverbatim %}
+</html>

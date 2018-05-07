@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Todo List</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/todoCtrl.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/crowdcomms.css" %}">
+        <link rel="stylesheet" href="{% static "css/table.css" %}">
+
+    </head>
+        {% verbatim %}
+    <body ng-app="todoApp">
+        <div  class="ccHeader">
+            <div class="ccTitle">CrowdComms Todo List Gilson Dias <Code Challenge> </div>
+            <div class="ccTitle">Edit Todo <Code Challenge> </div>
+        </div>
+    </body>
+        {% endverbatim %}
