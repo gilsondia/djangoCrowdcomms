@@ -27,6 +27,7 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
             model: null,
             tableHeader: [
                 {name: 'Priority'},
+                {name: 'Status'},
                 {name: 'Title'},
                 {name: 'Description'},
                 {name: 'Deadline'},
@@ -79,12 +80,10 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
         };
 
        $scope.showEditModal = function (idParam) {
-            var modalInstance;
-            var modalInstance;
             //just check if it a integer more than just zero
             if(idParam!=null && idParam>0){
                 $http.get(url+"?id="+idParam).then(function (response) {
-                    modalInstance = $modal.open({
+                   var modalInstance = $modal.open({
                         templateUrl: '../modal-edit-task',
                         controller: editTaskCtrl,
                         scope: $scope,
@@ -95,15 +94,13 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
                         }
                     }
                     });
+                    modalInstance.result.then(function (selectedItem) {
+                        $scope.selected = selectedItem;
+                    }, function () {
+                        $log.info('Modal dismissed at: ' + new Date());
+                    });
                 });
-
            }
-
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
         };
 
 
@@ -127,7 +124,7 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
                     dateTodo:new Date().toISOString(),
                     status:"1"
                 }
-                alert(JSON.stringify(jsonTask));
+
                $http.post(url, JSON.stringify(jsonTask), config)
                     .then(
                        function(response){
@@ -147,11 +144,32 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
     };
 
     var editTaskCtrl = function ($scope, $modalInstance,$http,record) {
+
+
         function init(){
-            alert(record.title);
-            $scope.employee = record;
+            $scope.taskEdit = record[0];
+            $scope.taskEdit.deadline = new Date($scope.taskEdit.deadline);
+            $scope.taskID=$scope.taskEdit.id
         }
-         init();
+        init();
+
+        var url = 'http://127.0.0.1:8000/todo/'+$scope.taskID+'/';
+        var config = {headers:{'Content-Type': 'application/json'}};
+
+        $scope.saveEdit = function(){
+
+            $http.put(url,JSON.stringify($scope.taskEdit),config).then(
+               function(response){
+                 // success callback
+                 $scope.loadList();
+               },
+               function(response){
+                 // failure callback
+               }
+            );
+            $modalInstance.close('closed');
+        };
+
         $scope.cancelModal = function () {
             $modalInstance.dismiss('cancel');
         };

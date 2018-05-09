@@ -12,3 +12,4 @@ class todoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields='__all__'
+

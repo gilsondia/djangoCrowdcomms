@@ -257,7 +257,6 @@ iframe {
 }
 .priority1:before{
   content: "Low";
-
 }
 .priority2:before{
   content: "Medium";
@@ -267,4 +266,13 @@ iframe {
 }
 .priority4:before{
   content: "Urgent";
+}
+.status1:before{
+  content: "Open";
+}
+.status2:before{
+  content: "In Progress";
+}
+.status3:before{
+  content: "Finished";
 }

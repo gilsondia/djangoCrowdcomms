@@ -48,7 +48,7 @@
          <div  class="divTable">
             <div class="table">
                 <div class="row header">
-                    <div class="cell" style="width: 10%" ng-repeat="header in listTableheader.tableHeader">
+                    <div class="cell" ng-repeat="header in listTableheader.tableHeader">
                         {{ header.name }}
                     </div>
                 </div>
@@ -56,10 +56,13 @@
                     <div class="cell" data-title="Priority" style="width: 10%">
                         <li class="priority{{ to.priority }}"></li>
                     </div>
+                     <div class="cell" data-title="Status" style="width: 10%">
+                        <li class="status{{ to.status }}"></li>
+                    </div>
                     <div class="cell" data-title="Title" style="width: 15%">
                         {{ to.title }}
                     </div>
-                    <div class="cell" data-title="Description" style="width: 50%">
+                    <div class="cell" data-title="Description" style="width: 40%">
                         {{ to.text }}
                     </div>
                     <div class="cell" data-title="Deadline" style="width: 15%">
