@@ -4,8 +4,7 @@ from django.conf.urls import url
 from webapp import views
 
 urlpatterns = [
-    url(r'^$', views.HomePageView.as_view(), name='home'),
-    url(r'^editTodo/$', views.EditTodoPageView.as_view(), name='editTodo'),
-    url(r'^modalIndex/$', views.modalIndexPageView.as_view(), name='modalIndex'),
-    url(r'^modal-add-task/$', views.modalAddTaskPageView.as_view(), name='modal-add-task')
+    url(r'^$', views.IndexPageView.as_view(), name='index'),
+    url(r'^modal-add-task/$', views.modalAddTaskPageView.as_view(), name='modal-add-task'),
+    url(r'^modal-edit-task/$', views.modalEditTaskPageView.as_view(), name='modal-edit-task')
 ]

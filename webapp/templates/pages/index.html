@@ -9,13 +9,12 @@
         <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
         <script type="text/javascript" src="{% static "js/app.js" %}"></script>
         <script type="text/javascript" src="{% static "js/todoCtrl.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/addTaskCtrl.js" %}"></script>
         <link rel="stylesheet" href="{% static "css/crowdcomms.css" %}">
         <link rel="stylesheet" href="{% static "css/table.css" %}">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     </head>
     {% verbatim %}
-    <body ng-app="todoApp" ng-controller="todoCtrl">
+    <body ng-app="todoApp" ng-controller="todoCtrl" ng-init="loadList()">
         <div  class="ccHeader">
             <div class="ccTitle">CrowdComms Todo List Gilson Dias</div>
         </div>
@@ -33,7 +32,7 @@
                         <td>
                             Priority:
                             <select id="priorityFilter" name="priorityFilter" ng-model="priorityFilter">
-                                <option value="" selected>>--Please Select--<</option>
+                                <option value="" selected>--Please Select--</option>
                                 <option ng-repeat="priority in listPriority.availablePriority" value="{{priority.id}}">{{priority.name}}</option>
                             </select>
                         </td>
@@ -49,20 +48,8 @@
          <div  class="divTable">
             <div class="table">
                 <div class="row header">
-                    <div class="cell" style="width: 10%">
-                        Priority
-                    </div>
-                    <div class="cell" style="width: 15%">
-                        Title
-                    </div>
-                    <div class="cell" style="width: 50%">
-                        Description
-                    </div>
-                    <div class="cell" style="width: 15%">
-                        Deadline
-                    </div>
-                    <div class="cell" style="width: 10%">
-                        &nbsp;
+                    <div class="cell" style="width: 10%" ng-repeat="header in listTableheader.tableHeader">
+                        {{ header.name }}
                     </div>
                 </div>
                 <div class="row tableRow{{ to.priority }}" ng-repeat="to in todo | filter:filterTableStatus | filter:filterTablePriority">
@@ -79,7 +66,7 @@
                         {{ to.deadline }}
                     </div>
                     <div class="cell" style="width: 10%">
-                         <input type="button" class="large grey button" value="Edit" ng-click="Calling()"/>
+                         <input type="button" class="large grey button" value="Edit" ng-click="showEditModal(to.id)"/>
                         </div>
                     </div>
                 </div>

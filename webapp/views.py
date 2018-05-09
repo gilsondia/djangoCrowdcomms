@@ -2,8 +2,6 @@ from django.shortcuts import render
 import logging
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -30,30 +28,31 @@ class UserList(APIView):
         User.objects.get(id=request.data['id']).delete()
         return HttpResponse()
 
+#list of task to-do.
 class TodoList(APIView):
     def get(self,request):
-        statusParam = self.request.query_params.get('status')
-        priorityParam = self.request.query_params.get('priority')
-
-        if statusParam is not None and statusParam.find(','):
-            statusParam = filter(None,statusParam.split(','))
+        idParam =self.request.query_params.get('id',None)
+        if idParam is not None:
+            todoAux = Todo.objects.filter(pk=idParam)
         else:
-            # no status param, ok get all of them
-            statusParam = [1,2,3]
-
-        if priorityParam is not None and priorityParam.find(','):
-            priorityParam = filter(None,priorityParam.split(','))
-        else:
-            #no priority param, ok get all of them
-            priorityParam = [1,2,3,4]
-
-        todoAux = Todo.objects.filter(status__in=statusParam, priority__in=priorityParam).order_by('-priority', 'deadline')
+            todoAux = Todo.objects.order_by('-priority', 'deadline')
 
         serializer = todoSerializer(todoAux, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        serializer = todoSerializer(data=request.data)
+        try:
+            #only priority lower than 4 and status lower than 3
+            if serializer.is_valid() and int(request.data['priority'])<=4 and int(request.data['status'])<=3:
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class HomePageView(TemplateView):
+
+class IndexPageView(TemplateView):
     template_name = "pages/index.html"
 
 class AboutPageView(TemplateView):
@@ -62,9 +61,8 @@ class AboutPageView(TemplateView):
 class EditTodoPageView(TemplateView):
     template_name = "pages/editTodo.html"
 
-
-class modalIndexPageView(TemplateView):
-    template_name = "pages/modalIndex.html"
-
 class modalAddTaskPageView(TemplateView):
     template_name = "pages/modal-add-task.html"
+
+class modalEditTaskPageView(TemplateView):
+    template_name = "pages/modal-edit-task.html"
