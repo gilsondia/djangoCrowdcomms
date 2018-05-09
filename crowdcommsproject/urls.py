@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', views.UserList.as_view()),
     path('todo/', views.TodoList.as_view()),
+    path('todo/<int:id>/', views.TodoList.as_view()),
     url(r'^', include('webapp.urls'))
 ]
