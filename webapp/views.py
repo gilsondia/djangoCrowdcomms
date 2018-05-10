@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import logging
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from rest_framework.views import APIView
@@ -31,6 +32,7 @@ class UserList(APIView):
 #list of task to-do.
 class TodoList(APIView):
     #get to list all to-do
+    @csrf_exempt
     def get(self,request):
         idParam =self.request.query_params.get('id',None)
         if idParam is not None:
@@ -42,6 +44,7 @@ class TodoList(APIView):
         return Response(serializer.data)
 
     #post to add new to-do
+    @csrf_exempt
     def post(self, request):
         serializer = todoSerializer(data=request.data)
         try:
@@ -54,6 +57,7 @@ class TodoList(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     #put to update any to-do
+    @csrf_exempt
     def put(self,request,id):
 
         todo = Todo.objects.get(pk=id)
@@ -67,6 +71,18 @@ class TodoList(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # put to update any to-do
+
+    #delete method.
+    @csrf_exempt
+    def delete(self, request, id):
+        try:
+            todo = Todo.objects.get(pk=id)
+            todo.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Todo.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class IndexPageView(TemplateView):
     template_name = "pages/index.html"
@@ -82,3 +98,6 @@ class modalAddTaskPageView(TemplateView):
 
 class modalEditTaskPageView(TemplateView):
     template_name = "pages/modal-edit-task.html"
+
+class modalDeleteTaskPageView(TemplateView):
+    template_name = "pages/modal-delete-task.html"

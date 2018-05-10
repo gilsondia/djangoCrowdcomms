@@ -1,6 +1,9 @@
 app.controller('todoCtrl',['$scope','$http','$modal','$log',
     function($scope, $http, $modal,$log) {
 
+        /**
+         * List of status prioritys to populate the selects HTML
+         * */
         //list of status
         $scope.listStatus = {
             model: null,
@@ -34,36 +37,34 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
                 {name: 'Action'}
             ]
         };
-
-        var url = 'http://127.0.0.1:8000/todo/';
-        var config = {headers:{'Content-Type': 'application/json'}};
-
-        $scope.loadList = function () {
-
-            //loading todolist from rest api django
-            $http.get(url,{},config).then(function (response) {
-                $scope.todo = response.data;
-            });
-
-        };
-
+       /**Status Filter and Priority*/
        $scope.filterTableStatus = {};
        $scope.filterTablePriority = {};
 
-       //filter to list by status{1:Open,2:in progress,3:finished}
+        /**It must be moved to parameter file ???????*/
+        $scope.urlAPI='http://127.0.0.1:8000/todo/';
+        $scope.configAPI = {headers:{'Content-Type': 'application/json'}};
+
+        /**loading todolist from rest api django*/
+        $scope.loadList = function () {
+
+            $http.get($scope.urlAPI,{},$scope.configAPI).then(function (response) {
+                $scope.todo = response.data;
+            });
+        };
+
+       /**filter to list by status{1:Open,2:in progress,3:finished}*/
         $scope.$watch('statusFilter', function(newValue){
             $scope.filterTableStatus ={'status':newValue};
         });
-        //filter to list by priority{1:low,2:medium,3:high,4:urgent}
+        /**filter to list by priority{1:low,2:medium,3:high,4:urgent}*/
        $scope.$watch('priorityFilter', function(newValue){
             $scope.filterTablePriority ={'priority':newValue};
 
         });
 
+       /**Function to open the Add Modal - BootStrap*/
        $scope.showAddModal = function () {
-
-            console.log($scope.message);
-
             var modalInstance = $modal.open({
                 templateUrl: '../modal-add-task',
                 controller: addTaskCtrl,
@@ -71,61 +72,68 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
                 http: $http,
                 resolve: {}
             });
-
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
         };
 
+       /**Function to open EditModal*/
        $scope.showEditModal = function (idParam) {
+
             //just check if it a integer more than just zero
             if(idParam!=null && idParam>0){
-                $http.get(url+"?id="+idParam).then(function (response) {
+                var objToEdit;
+                //it can be search on rest API too
+                //$http.get(url+"?id="+idParam).then(function (response) {
+                var i;
+                for(i=0;i<$scope.todo.length;i++){
+                    if($scope.todo[i].id==idParam){
+                        objToEdit=$scope.todo[i];
+                        //it was found. finish search loop
+                        i=$scope.todo.length;
+                    }
+                }
                    var modalInstance = $modal.open({
                         templateUrl: '../modal-edit-task',
                         controller: editTaskCtrl,
                         scope: $scope,
                         http: $http,
                         resolve: {
-                            record: function () {
-                                return response.data;
+                            record: function () {return objToEdit;}
                         }
-                    }
                     });
-                    modalInstance.result.then(function (selectedItem) {
-                        $scope.selected = selectedItem;
-                    }, function () {
-                        $log.info('Modal dismissed at: ' + new Date());
-                    });
-                });
+                //});//it is the end of the http request to load from the RESTful API
            }
         };
 
-
-       $scope.Calling = function(){
-            //$window.self.location.href = '/editTodo';
+        /**Function to open DeleteModal*/
+       $scope.showDeleteModal = function (idParam) {
+           //just check if it a integer more than just zero
+            if(idParam!=null && idParam>0){
+                   var modalInstance = $modal.open({
+                        templateUrl: '../modal-delete-task',
+                        controller: deleteTaskCtrl,
+                        scope: $scope,
+                        http: $http,
+                        resolve: {
+                            idDelete: function () {return idParam;}
+                        }
+                    });
+                //});//it is the end of the http request to load from the RESTful API
+           }
        };
 }]);
 
-
+    /**Modal controlle add task*/
     var addTaskCtrl = function ($scope, $modalInstance,$http) {
 
-            var url = 'http://127.0.0.1:8000/todo/';
-            var config = {headers:{'Content-Type': 'application/json'}};
-
+            //var url = 'http://127.0.0.1:8000/todo/';
+            //var config = {headers:{'Content-Type': 'application/json'}};
+            //Adding a nes task using post
+            $scope.AddObjJson={};
             $scope.addTask = function () {
-                var jsonTask = {
-                    title: document.getElementById("idtitle").value,
-                    text: document.getElementById("iddescription").value,
-                    priority: document.getElementById("idPriority").value,
-                    deadline: document.getElementById("iddeadline").value,
-                    dateTodo:new Date().toISOString(),
-                    status:"1"
-                }
 
-               $http.post(url, JSON.stringify(jsonTask), config)
+                //default status is open
+                $scope.AddObjJson.status=1;
+
+               $http.post($scope.urlAPI, JSON.stringify($scope.AddObjJson), $scope.configAPIg)
                     .then(
                        function(response){
                          // success callback
@@ -143,22 +151,16 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
             };
     };
 
+    /**Edit Modal Controller*/
     var editTaskCtrl = function ($scope, $modalInstance,$http,record) {
 
 
-        function init(){
-            $scope.taskEdit = record[0];
-            $scope.taskEdit.deadline = new Date($scope.taskEdit.deadline);
-            $scope.taskID=$scope.taskEdit.id
-        }
-        init();
-
-        var url = 'http://127.0.0.1:8000/todo/'+$scope.taskID+'/';
-        var config = {headers:{'Content-Type': 'application/json'}};
+        //var url = 'http://127.0.0.1:8000/todo/'+$scope.taskID+'/';
+        //var config = {headers:{'Content-Type': 'application/json'}};
 
         $scope.saveEdit = function(){
 
-            $http.put(url,JSON.stringify($scope.taskEdit),config).then(
+            $http.put($scope.urlAPI+$scope.taskID+'/',JSON.stringify($scope.taskEdit),$scope.configAPI).then(
                function(response){
                  // success callback
                  $scope.loadList();
@@ -175,6 +177,25 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
         };
     };
 
+    /**Delete controller*/
+    var deleteTaskCtrl = function ($scope, $modalInstance,$http,idDelete) {
+         $scope.delete = function(){
+           $http.delete($scope.urlAPI+idDelete+'/',$scope.configAPI).then(
+               function(response){
+                 // success callback
+                 $scope.loadList();
+               },
+               function(response){
+                 // failure callback
+               }
+           );
+           $modalInstance.close('closed');
+         };
+
+         $scope.cancelModal = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    };
 
 
 

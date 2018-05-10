@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.utils import timezone
 
 
 class User(models.Model):
@@ -14,8 +15,8 @@ class Todo(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     priority = models.IntegerField()
-    deadline = models.DateTimeField(default=datetime.now)
-    dateTodo = models.DateTimeField(default=datetime.now, blank=True)
+    deadline = models.DateTimeField()
+    dateTodo = models.DateTimeField(default=timezone.now, blank=True)
     status = models.IntegerField(default=1)
 
     def __str__(self):
