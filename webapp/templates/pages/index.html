@@ -23,16 +23,16 @@
                 <table>
                     <tr>
                         <td>
-                            Status:
+                            Filter by:
                             <select id="statusFilter" name="statusFilter" ng-model="statusFilter">
-                                <option value="" selected>--Please Select--</option>
+                                <option value="" selected>--Select one Status--</option>
                                 <option ng-repeat="status in listStatus.availableStatus" value="{{status.id}}">{{status.name}}</option>
                             </select>
                         </td>
                         <td>
-                            Priority:
+                            Filter by:
                             <select id="priorityFilter" name="priorityFilter" ng-model="priorityFilter">
-                                <option value="" selected>--Please Select--</option>
+                                <option value="" selected>--Select one Priority--</option>
                                 <option ng-repeat="priority in listPriority.availablePriority" value="{{priority.id}}">{{priority.name}}</option>
                             </select>
                         </td>
@@ -69,8 +69,10 @@
                         {{ to.deadline }}
                     </div>
                     <div class="cell" style="width: 10%">
-                         <input type="button" class="large grey button" value="Edit" ng-click="showEditModal(to.id)"/>
-                        </div>
+                        <input type="button" class="large grey button" value="Edit" ng-click="showEditModal(to.id)"/>
+                    </div>
+                    <div class="cell" style="width: 10%">
+                        <input type="button" class="large grey button" value="Delete" ng-click="showDeleteModal(to.id)"/>
                     </div>
                 </div>
             </div>
