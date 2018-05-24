@@ -90,6 +90,7 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
                         i=$scope.todo.length;
                     }
                 }
+
                    var modalInstance = $modal.open({
                         templateUrl: '../modal-edit-task',
                         controller: editTaskCtrl,
@@ -158,9 +159,11 @@ app.controller('todoCtrl',['$scope','$http','$modal','$log',
         //var url = 'http://127.0.0.1:8000/todo/'+$scope.taskID+'/';
         //var config = {headers:{'Content-Type': 'application/json'}};
 
+        $scope.taskEdit = JSON.parse(JSON.stringify(record));
+        $scope.taskEdit.deadline = new Date($scope.taskEdit.deadline);
         $scope.saveEdit = function(){
 
-            $http.put($scope.urlAPI+$scope.taskID+'/',JSON.stringify($scope.taskEdit),$scope.configAPI).then(
+            $http.put($scope.urlAPI+record.id+'/',JSON.stringify($scope.taskEdit),$scope.configAPI).then(
                function(response){
                  // success callback
                  $scope.loadList();
