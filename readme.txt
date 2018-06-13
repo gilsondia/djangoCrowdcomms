@@ -2,7 +2,7 @@ Crowdcomms <code challenge>
 
 using the sqlite base which is versioned on gitHub
 sqlite user: admin
-sqlite passcode: crodcomms2018
+sqlite passcode: crowdcomms2018
 
  pre-requiste.
  python and django framework installed.
