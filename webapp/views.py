@@ -84,8 +84,15 @@ class TodoList(APIView):
         except Todo.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
+
+class Doubletap(TemplateView):
+    template_name = "pages/doubletap.html"
+
 class IndexPageView(TemplateView):
     template_name = "pages/index.html"
+
+class TodoListPageView(TemplateView):
+    template_name = "pages/todolist.html"
 
 class AboutPageView(TemplateView):
     template_name = "pages/about.html"

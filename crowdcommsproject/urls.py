@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework_jwt.views import obtain_jwt_token
 from webapp import views
 
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('user/', views.UserList.as_view()),
     path('todo/', views.TodoList.as_view()),
     path('todo/<int:id>/', views.TodoList.as_view()),
+    url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^', include('webapp.urls'))
 ]

@@ -2,81 +2,69 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Todo List</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
-        <script type="text/javascript" src="{% static "js/app.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/todoCtrl.js" %}"></script>
-        <link rel="stylesheet" href="{% static "css/crowdcomms.css" %}">
-        <link rel="stylesheet" href="{% static "css/table.css" %}">
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <style>
+
+        </style>
     </head>
     {% verbatim %}
-    <body ng-app="todoApp" ng-controller="todoCtrl" ng-init="loadList()">
-        <div  class="ccHeader">
-            <div class="ccTitle">CrowdComms Todo List Gilson Dias</div>
+
+    <div class="wrapper">
+        <main>
+          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis necessitatibus earum tenetur itaque ducimus atque nam vitae ab non quasi natus quam, cum hic quod possimus quibusdam inventore minima temporibus.</div>
+          <div>Optio inventore delectus quas rerum mollitia eum, repellendus voluptatum! Quos, quas nobis delectus, ipsa tempore reiciendis dolore numquam sequi tempora, nostrum in mollitia laboriosam odio labore voluptatem sint. Similique, aliquam.</div>
+          <div>Sapiente quisquam vitae alias in nesciunt numquam id, distinctio! Doloribus error mollitia, optio debitis ratione quaerat maiores odio nostrum autem commodi tempora magnam, quos necessitatibus nobis aperiam consequuntur perspiciatis deserunt.</div>
+          <div>Hic facere nam aliquam tenetur officiis, ratione, sunt aliquid perspiciatis distinctio laborum perferendis nisi ullam omnis incidunt, quasi illo corrupti, dolores eius vero ipsum tempore. Tempora consequatur necessitatibus, saepe assumenda.</div>
+          <div>Eveniet, odit deleniti neque voluptates soluta architecto, quae aspernatur aut minima rerum itaque nobis distinctio ex culpa! Dolore sit vel mollitia aspernatur distinctio voluptatibus! Iste perspiciatis, aliquid a doloribus et.</div>
+          <div>Molestias, ducimus! Magni doloribus fugiat praesentium dolore minus perferendis, reprehenderit voluptatibus fuga, rerum quam eveniet, odit ut eaque, repellat provident aperiam repudiandae. Quos porro eveniet, dignissimos non quibusdam provident eligendi!</div>
+          <div>Ducimus unde ea iste alias fugiat debitis natus illo eligendi! Nisi dolor esse totam optio, tenetur distinctio, sequi inventore eaque iure earum suscipit quam ipsam qui quae molestias id expedita!</div>
+          <div>Veritatis delectus, in laudantium. Excepturi, deserunt! Ullam voluptatem aliquid doloribus ab, officia veniam maiores magnam maxime. Vero esse non dicta autem, aliquam eos dolore harum sed incidunt architecto placeat eaque!</div>
+          <div>Hic veniam porro autem quia, commodi provident sunt, at tempore libero, consequuntur, accusamus. Vero illo molestias nam, velit hic iure, a sequi, explicabo ipsum voluptates numquam modi dolorum rem culpa!</div>
+          <div>Iusto a cum nihil eos atque, impedit, debitis quis dolor consectetur ratione ipsam nisi recusandae temporibus possimus. Non, natus a, consequuntur provident facilis nemo assumenda dolorum vitae, eligendi et harum.</div>
+           <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis necessitatibus earum tenetur itaque ducimus atque nam vitae ab non quasi natus quam, cum hic quod possimus quibusdam inventore minima temporibus.</div>
+          <div>Optio inventore delectus quas rerum mollitia eum, repellendus voluptatum! Quos, quas nobis delectus, ipsa tempore reiciendis dolore numquam sequi tempora, nostrum in mollitia laboriosam odio labore voluptatem sint. Similique, aliquam.</div>
+          <div>Sapiente quisquam vitae alias in nesciunt numquam id, distinctio! Doloribus error mollitia, optio debitis ratione quaerat maiores odio nostrum autem commodi tempora magnam, quos necessitatibus nobis aperiam consequuntur perspiciatis deserunt.</div>
+          <div>Hic facere nam aliquam tenetur officiis, ratione, sunt aliquid perspiciatis distinctio laborum perferendis nisi ullam omnis incidunt, quasi illo corrupti, dolores eius vero ipsum tempore. Tempora consequatur necessitatibus, saepe assumenda.</div>
+          <div>Eveniet, odit deleniti neque voluptates soluta architecto, quae aspernatur aut minima rerum itaque nobis distinctio ex culpa! Dolore sit vel mollitia aspernatur distinctio voluptatibus! Iste perspiciatis, aliquid a doloribus et.</div>
+          <div>Molestias, ducimus! Magni doloribus fugiat praesentium dolore minus perferendis, reprehenderit voluptatibus fuga, rerum quam eveniet, odit ut eaque, repellat provident aperiam repudiandae. Quos porro eveniet, dignissimos non quibusdam provident eligendi!</div>
+          <div>Ducimus unde ea iste alias fugiat debitis natus illo eligendi! Nisi dolor esse totam optio, tenetur distinctio, sequi inventore eaque iure earum suscipit quam ipsam qui quae molestias id expedita!</div>
+          <div>Veritatis delectus, in laudantium. Excepturi, deserunt! Ullam voluptatem aliquid doloribus ab, officia veniam maiores magnam maxime. Vero esse non dicta autem, aliquam eos dolore harum sed incidunt architecto placeat eaque!</div>
+          <div>Hic veniam porro autem quia, commodi provident sunt, at tempore libero, consequuntur, accusamus. Vero illo molestias nam, velit hic iure, a sequi, explicabo ipsum voluptates numquam modi dolorum rem culpa!</div>
+          <div>Iusto a cum nihil eos atque, impedit, debitis quis dolor consectetur ratione ipsam nisi recusandae temporibus possimus. Non, natus a, consequuntur provident facilis nemo assumenda dolorum vitae, eligendi et harum.</div>
+             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis necessitatibus earum tenetur itaque ducimus atque nam vitae ab non quasi natus quam, cum hic quod possimus quibusdam inventore minima temporibus.</div>
+          <div>Optio inventore delectus quas rerum mollitia eum, repellendus voluptatum! Quos, quas nobis delectus, ipsa tempore reiciendis dolore numquam sequi tempora, nostrum in mollitia laboriosam odio labore voluptatem sint. Similique, aliquam.</div>
+          <div>Sapiente quisquam vitae alias in nesciunt numquam id, distinctio! Doloribus error mollitia, optio debitis ratione quaerat maiores odio nostrum autem commodi tempora magnam, quos necessitatibus nobis aperiam consequuntur perspiciatis deserunt.</div>
+          <div>Hic facere nam aliquam tenetur officiis, ratione, sunt aliquid perspiciatis distinctio laborum perferendis nisi ullam omnis incidunt, quasi illo corrupti, dolores eius vero ipsum tempore. Tempora consequatur necessitatibus, saepe assumenda.</div>
+          <div>Eveniet, odit deleniti neque voluptates soluta architecto, quae aspernatur aut minima rerum itaque nobis distinctio ex culpa! Dolore sit vel mollitia aspernatur distinctio voluptatibus! Iste perspiciatis, aliquid a doloribus et.</div>
+          <div>Molestias, ducimus! Magni doloribus fugiat praesentium dolore minus perferendis, reprehenderit voluptatibus fuga, rerum quam eveniet, odit ut eaque, repellat provident aperiam repudiandae. Quos porro eveniet, dignissimos non quibusdam provident eligendi!</div>
+          <div>Ducimus unde ea iste alias fugiat debitis natus illo eligendi! Nisi dolor esse totam optio, tenetur distinctio, sequi inventore eaque iure earum suscipit quam ipsam qui quae molestias id expedita!</div>
+          <div>Veritatis delectus, in laudantium. Excepturi, deserunt! Ullam voluptatem aliquid doloribus ab, officia veniam maiores magnam maxime. Vero esse non dicta autem, aliquam eos dolore harum sed incidunt architecto placeat eaque!</div>
+          <div>Hic veniam porro autem quia, commodi provident sunt, at tempore libero, consequuntur, accusamus. Vero illo molestias nam, velit hic iure, a sequi, explicabo ipsum voluptates numquam modi dolorum rem culpa!</div>
+          <div>Iusto a cum nihil eos atque, impedit, debitis quis dolor consectetur ratione ipsam nisi recusandae temporibus possimus. Non, natus a, consequuntur provident facilis nemo assumenda dolorum vitae, eligendi et harum.</div>
+             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis necessitatibus earum tenetur itaque ducimus atque nam vitae ab non quasi natus quam, cum hic quod possimus quibusdam inventore minima temporibus.</div>
+          <div>Optio inventore delectus quas rerum mollitia eum, repellendus voluptatum! Quos, quas nobis delectus, ipsa tempore reiciendis dolore numquam sequi tempora, nostrum in mollitia laboriosam odio labore voluptatem sint. Similique, aliquam.</div>
+          <div>Sapiente quisquam vitae alias in nesciunt numquam id, distinctio! Doloribus error mollitia, optio debitis ratione quaerat maiores odio nostrum autem commodi tempora magnam, quos necessitatibus nobis aperiam consequuntur perspiciatis deserunt.</div>
+          <div>Hic facere nam aliquam tenetur officiis, ratione, sunt aliquid perspiciatis distinctio laborum perferendis nisi ullam omnis incidunt, quasi illo corrupti, dolores eius vero ipsum tempore. Tempora consequatur necessitatibus, saepe assumenda.</div>
+          <div>Eveniet, odit deleniti neque voluptates soluta architecto, quae aspernatur aut minima rerum itaque nobis distinctio ex culpa! Dolore sit vel mollitia aspernatur distinctio voluptatibus! Iste perspiciatis, aliquid a doloribus et.</div>
+          <div>Molestias, ducimus! Magni doloribus fugiat praesentium dolore minus perferendis, reprehenderit voluptatibus fuga, rerum quam eveniet, odit ut eaque, repellat provident aperiam repudiandae. Quos porro eveniet, dignissimos non quibusdam provident eligendi!</div>
+          <div>Ducimus unde ea iste alias fugiat debitis natus illo eligendi! Nisi dolor esse totam optio, tenetur distinctio, sequi inventore eaque iure earum suscipit quam ipsam qui quae molestias id expedita!</div>
+          <div>Veritatis delectus, in laudantium. Excepturi, deserunt! Ullam voluptatem aliquid doloribus ab, officia veniam maiores magnam maxime. Vero esse non dicta autem, aliquam eos dolore harum sed incidunt architecto placeat eaque!</div>
+          <div>Hic veniam porro autem quia, commodi provident sunt, at tempore libero, consequuntur, accusamus. Vero illo molestias nam, velit hic iure, a sequi, explicabo ipsum voluptates numquam modi dolorum rem culpa!</div>
+          <div>Iusto a cum nihil eos atque, impedit, debitis quis dolor consectetur ratione ipsam nisi recusandae temporibus possimus. Non, natus a, consequuntur provident facilis nemo assumenda dolorum vitae, eligendi et harum.</div>
+             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis necessitatibus earum tenetur itaque ducimus atque nam vitae ab non quasi natus quam, cum hic quod possimus quibusdam inventore minima temporibus.</div>
+          <div>Optio inventore delectus quas rerum mollitia eum, repellendus voluptatum! Quos, quas nobis delectus, ipsa tempore reiciendis dolore numquam sequi tempora, nostrum in mollitia laboriosam odio labore voluptatem sint. Similique, aliquam.</div>
+          <div>Sapiente quisquam vitae alias in nesciunt numquam id, distinctio! Doloribus error mollitia, optio debitis ratione quaerat maiores odio nostrum autem commodi tempora magnam, quos necessitatibus nobis aperiam consequuntur perspiciatis deserunt.</div>
+          <div>Hic facere nam aliquam tenetur officiis, ratione, sunt aliquid perspiciatis distinctio laborum perferendis nisi ullam omnis incidunt, quasi illo corrupti, dolores eius vero ipsum tempore. Tempora consequatur necessitatibus, saepe assumenda.</div>
+          <div>Eveniet, odit deleniti neque voluptates soluta architecto, quae aspernatur aut minima rerum itaque nobis distinctio ex culpa! Dolore sit vel mollitia aspernatur distinctio voluptatibus! Iste perspiciatis, aliquid a doloribus et.</div>
+          <div>Molestias, ducimus! Magni doloribus fugiat praesentium dolore minus perferendis, reprehenderit voluptatibus fuga, rerum quam eveniet, odit ut eaque, repellat provident aperiam repudiandae. Quos porro eveniet, dignissimos non quibusdam provident eligendi!</div>
+          <div>Ducimus unde ea iste alias fugiat debitis natus illo eligendi! Nisi dolor esse totam optio, tenetur distinctio, sequi inventore eaque iure earum suscipit quam ipsam qui quae molestias id expedita!</div>
+          <div>Veritatis delectus, in laudantium. Excepturi, deserunt! Ullam voluptatem aliquid doloribus ab, officia veniam maiores magnam maxime. Vero esse non dicta autem, aliquam eos dolore harum sed incidunt architecto placeat eaque!</div>
+          <div>Hic veniam porro autem quia, commodi provident sunt, at tempore libero, consequuntur, accusamus. Vero illo molestias nam, velit hic iure, a sequi, explicabo ipsum voluptates numquam modi dolorum rem culpa!</div>
+          <div>Iusto a cum nihil eos atque, impedit, debitis quis dolor consectetur ratione ipsam nisi recusandae temporibus possimus. Non, natus a, consequuntur provident facilis nemo assumenda dolorum vitae, eligendi et harum.</div>
+            <input type="text">
+        </main>
+        <div id="footer">
+            <p>&copy; 2018 SulmaxCP. All Rights Reserved.</p>
         </div>
-        <div class="addNewTodo">
-            <div style="position: absolute;left: 10px;">
-                <table>
-                    <tr>
-                        <td>
-                            Filter by:
-                            <select id="statusFilter" name="statusFilter" ng-model="statusFilter">
-                                <option value="" selected>--Select one Status--</option>
-                                <option ng-repeat="status in listStatus.availableStatus" value="{{status.id}}">{{status.name}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            Filter by:
-                            <select id="priorityFilter" name="priorityFilter" ng-model="priorityFilter">
-                                <option value="" selected>--Select one Priority--</option>
-                                <option ng-repeat="priority in listPriority.availablePriority" value="{{priority.id}}">{{priority.name}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <input type="button" value="Add New Task" ng-click="showAddModal()" class="large blue button"/>
-            </div>
-        </div>
-        <div style="height: 15px; width: 100%"></div>
-        <!--listing todo tasks-->
-         <div  class="divTable">
-            <div class="table">
-                <div class="row header">
-                    <div class="cell" ng-repeat="header in listTableheader.tableHeader">
-                        {{ header.name }}
-                    </div>
-                </div>
-                <div class="row tableRow{{ to.priority }}" ng-repeat="to in todo | filter:filterTableStatus | filter:filterTablePriority">
-                    <div class="cell" data-title="Priority" style="width: 10%">
-                        <li class="priority{{ to.priority }}"></li>
-                    </div>
-                     <div class="cell" data-title="Status" style="width: 10%">
-                        <li class="status{{ to.status }}"></li>
-                    </div>
-                    <div class="cell" data-title="Title" style="width: 15%">
-                        {{ to.title }}
-                    </div>
-                    <div class="cell" data-title="Description" style="width: 40%">
-                        {{ to.text }}
-                    </div>
-                    <div class="cell" data-title="Deadline" style="width: 15%">
-                        {{ to.deadline }}
-                    </div>
-                    <div class="cell" style="width: 10%">
-                        <input type="button" class="large grey button" value="Edit" ng-click="showEditModal(to.id)"/>
-                    </div>
-                    <div class="cell" style="width: 10%">
-                        <input type="button" class="large grey button" value="Delete" ng-click="showDeleteModal(to.id)"/>
-                    </div>
-                </div>
-            </div>
-		</div>
-    </body>
+    </div>
     {% endverbatim %}
 </html>

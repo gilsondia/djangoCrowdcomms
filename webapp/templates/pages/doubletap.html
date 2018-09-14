@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Todo List</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
+        <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/todoCtrl.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/crowdcomms.css" %}">
+        <link rel="stylesheet" href="{% static "css/table.css" %}">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    </head>
+    {% verbatim %}
+    <body ng-app="todoApp" ng-controller="todoCtrl" ng-init="loadList()">
+        <div>
+            <input type="button" value="Add New Task"  onclick="alert(navigator.appVersion);" style="touch-action: revert;" class="large blue button"/>
+        </div>
+    </body>
+    {% endverbatim %}
+</html>
